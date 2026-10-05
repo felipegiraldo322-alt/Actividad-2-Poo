@@ -10,7 +10,6 @@ class TipoA(Enum):
     EJECUTIVO = "EJECUTIVO"
     SUV = "SUV"
 
-
 class TipoColor(Enum):
     BLANCO = "BLANCO"
     NEGRO = "NEGRO"
@@ -21,14 +20,12 @@ class TipoColor(Enum):
     AZUL = "AZUL"
     VIOLETA = "VIOLETA"
 
-
 class TipoCom(Enum):
     GASOLINA = "GASOLINA"
     BIOETANOL = "BIOETANOL"
     DIESEL = "DIESEL"
     BIODIESEL = "BIODIESEL"
     GAS_NATURAL = "GAS_NATURAL"
-
 
 class Automovil:
 
@@ -52,14 +49,12 @@ class Automovil:
         self.color = color
 
     def acelerar(self, incremento_velocidad: int):
-
         self.velocidad_actual += incremento_velocidad
 
         if self.velocidad_actual > self.velocidad_maxima:
             self.multas += 1
 
     def desacelerar(self, decremento_velocidad: int):
-
         if (self.velocidad_actual - decremento_velocidad) >= 0:
             self.velocidad_actual -= decremento_velocidad
 
@@ -67,25 +62,21 @@ class Automovil:
             print("No se puede decrementar a una velocidad negativa")
 
     def frenar(self):
-
         self.velocidad_actual = 0
 
     def calcular_tiempo_llegada(self, distancia: int) -> float:
-
         if self.velocidad_actual == 0:
             return float('inf')
 
         return distancia / self.velocidad_actual
 
     def numero_multas(self) -> int:
-
         if self.multas < 0:
             return 0
 
         return self.multas
 
     def imprimir(self):
-
         print(f"Marca = {self.marca}")
         print(f"Modelo = {self.modelo}")
         print(f"Motor = {self.motor}")
@@ -97,7 +88,6 @@ class Automovil:
         print(f"Numero de multas = {self.multas}")
         print(f"Automático = {'Sí' if self.automatico else 'No'}")
         print(f"Color = {self.color.value}")
-
 
 if __name__ == "__main__":
 
@@ -125,7 +115,6 @@ if __name__ == "__main__":
     print(f"Número de multas = {auto1.numero_multas()}")
     
     #Prueba multas
-
     auto1.velocidad_actual = 100
     print(f"Velocidad actual = {auto1.velocidad_actual}")
     
@@ -139,4 +128,3 @@ if __name__ == "__main__":
     print(f"Número de multas = {auto1.numero_multas()}")
 
     print(f"Número de multas = {auto1.numero_multas()}")
-    
