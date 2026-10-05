@@ -11,7 +11,6 @@ class TipoPlaneta(Enum):
 class Planeta:
 
     def __init__(self, nombre, cantidad_satelites, masa, volumen, diametro, distancia_sol, tipo, es_observable, periodo_orbital=None, periodo_rotacional=None):
-        
         self.nombre = nombre
         self.cantidad_satelites = cantidad_satelites
         self.masa = masa
@@ -24,7 +23,6 @@ class Planeta:
         self.periodo_rotacional = periodo_rotacional
 
     def imprimir(self):
-
         print(f"Nombre del planeta = {self.nombre}")
         print(f"Cantidad de satélites = {self.cantidad_satelites}")
         print(f"Masa del planeta = {self.masa}")
@@ -35,20 +33,16 @@ class Planeta:
         print(f"Es observable = {self.es_observable}")
 
     def calcular_densidad(self) -> float:
-
         return self.masa / self.volumen if self.volumen != 0 else 0
 
     def es_planeta_exterior(self) -> bool:
-
         limite = 508632758.0
         return self.distancia_sol > limite
 
     def calcular_periodo_orbital(self) -> float:
-
         return (self.distancia_sol ** 3) ** 0.5
 
     def calcular_periodo_rotacional(self) -> float:
-
         return ((self.distancia_sol ** 3) ** 0.5) * 365.25
 
 p1 = Planeta("Tierra", 1, 5.972e24, 1.083e12, 12756, 1, TipoPlaneta.TERRESTRE, True)

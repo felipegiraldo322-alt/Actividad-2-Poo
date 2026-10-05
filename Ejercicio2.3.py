@@ -1,3 +1,4 @@
+#Ejercicio 2.3. Estado de un objeto
 
 from enum import Enum
 

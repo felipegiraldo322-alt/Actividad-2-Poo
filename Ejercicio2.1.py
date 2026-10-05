@@ -3,7 +3,6 @@
 class Persona:
 
     def __init__(self, nombre, apellido, numero_documento_identidad, ano_nacimiento, pais_nacimiento, genero):
-        
         self.nombre = nombre
         self.apellido = apellido
         self.numero_documento_identidad = numero_documento_identidad
@@ -12,7 +11,6 @@ class Persona:
         self.genero = genero
 
     def imprimir(self):
-
         print(f"Nombre = {self.nombre}")
         print(f"Apellido = {self.apellido}")
         print(f"Número de documento de identidad = {self.numero_documento_identidad}")
