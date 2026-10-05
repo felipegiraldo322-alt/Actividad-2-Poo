@@ -10,7 +10,7 @@ class TipoPlaneta(Enum):
 
 class Planeta:
 
-    def __init__(self, nombre, cantidad_satelites, masa, volumen, diametro, distancia_sol, tipo, es_observable):
+    def __init__(self, nombre, cantidad_satelites, masa, volumen, diametro, distancia_sol, tipo, es_observable, periodo_orbital=None, periodo_rotacional=None):
         
         self.nombre = nombre
         self.cantidad_satelites = cantidad_satelites
@@ -20,6 +20,8 @@ class Planeta:
         self.distancia_sol = distancia_sol
         self.tipo = tipo
         self.es_observable = es_observable
+        self.periodo_orbital = periodo_orbital
+        self.periodo_rotacional = periodo_rotacional
 
     def imprimir(self):
 
@@ -32,39 +34,35 @@ class Planeta:
         print(f"Tipo de planeta = {self.tipo.name}")
         print(f"Es observable = {self.es_observable}")
 
-    def calcular_densidad(self):
+    def calcular_densidad(self) -> float:
 
         return self.masa / self.volumen if self.volumen != 0 else 0
 
-    def es_planeta_exterior(self):
+    def es_planeta_exterior(self) -> bool:
 
         limite = 508632758.0
         return self.distancia_sol > limite
 
-print("Ingrese el nombre: ")
-nombre = input()
+    def calcular_periodo_orbital(self) -> float:
 
-print("Ingrese cantidad de satélites: ")
-cantidad_satelites = int(input())
+        return (self.distancia_sol ** 3) ** 0.5
 
-print("Ingrese la masa: ")
-masa = float(input())
+    def calcular_periodo_rotacional(self) -> float:
 
-print("Ingrese el volumen: ")
-volumen = float(input())
+        return ((self.distancia_sol ** 3) ** 0.5) * 365.25
 
-print("Ingrese el diámetro: ")
-diametro = int(input())
+p1 = Planeta("Tierra", 1, 5.972e24, 1.083e12, 12756, 1, TipoPlaneta.TERRESTRE, True)
 
-print("Ingrese la distancia al sol: ")
-distancia_sol = int(input())
-
-# Creating the instance (Hardcoded TERRESTRE and True as per your Java example)
-p1 = Planeta(nombre, cantidad_satelites, masa, volumen, diametro,
-    distancia_sol, TipoPlaneta.TERRESTRE, True)
-
-print("*********************************")
 p1.imprimir()
 print(f"Densidad del planeta = {p1.calcular_densidad()}")
 print(f"Es planeta exterior = {p1.es_planeta_exterior()}")
-print("*********************************")
+print(f"Período orbital del planeta en Años = {p1.calcular_periodo_orbital()}")
+print(f"Período rotacional del planeta en Días = {p1.calcular_periodo_rotacional()}")
+
+p2 = Planeta("Júpiter", 79, 1.898e27, 1.431e15, 142984, 5.2, TipoPlaneta.GASEOSO, True)
+
+p2.imprimir()
+print(f"Densidad del planeta = {p2.calcular_densidad()}")  
+print(f"Es planeta exterior = {p2.es_planeta_exterior()}")
+print(f"Período orbital del planeta en Años = {p2.calcular_periodo_orbital()}")
+print(f"Período rotacional del planeta en Días = {p2.calcular_periodo_rotacional()}")
